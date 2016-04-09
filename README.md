@@ -1,3 +1,3 @@
-# place-finder-app
+# Book Trading Club
 
 a [Sails](http://sailsjs.org) application
