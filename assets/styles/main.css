@@ -1,9 +1,38 @@
 body {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   padding-bottom: 20px;
 }
 
 .jumbotron {
   background-color: #4393B9;
   color: white;
+}
+
+.footer {
+  margin-top: 50px;
+}
+
+.cover {
+  display: inline-block;
+  /*border: 1px solid #ddd;*/
+  border-radius: 4px;
+  padding: 3px;
+  margin: 10px;
+}
+
+/*.close {*/
+/*  float: none;*/
+/*  vertical-align: top;*/
+/*  margin-left: -20px;*/
+/*  color: #dc143c;*/
+/*  opacity: .5;*/
+/*}*/
+
+.imgButton {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.requestBtn {
+  margin-bottom: 40px;
 }

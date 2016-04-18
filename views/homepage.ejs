@@ -1,4 +1,4 @@
-<nav class="navbar navbar navbar-fixed-top">
+<nav class="navbar navbar-default navbar-static-top" ng-controller="NavbarController as vm">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -7,57 +7,32 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Book Trading Club</a>
+      <a class="navbar-brand" href="/">Book Trading Club</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
+        <li ng-class="{active: vm.isActive('/')}"><a ng-href="/">Home</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a ng-href="/signup">Signup</a></li>
-        <li><a ng-href="/login">Login</a></li>
-        <li><a ng-href="/signup">Signup</a></li>
-        <li><a ng-href="/all-books">All Books</a></li>
-        <li><a ng-href="/my-books">My Books</a></li>
-        <li><a ng-href="/profile"><i class="fa fa-cog fa-lg"></i></a></li>
-        <li><a ng-href="/signout"><i class="fa fa-sign-out fa-lg"></i></a></li>
+      <ul ng-if="!vm.isAuthenticated()" class="nav navbar-nav navbar-right">
+        <li ng-class="{active: vm.isActive('/signup')}"><a ng-href="/signup">Signup</a></li>
+        <li ng-class="{active: vm.isActive('/login')}"><a ng-href="/login">Login</a></li>
+      </ul>
+      <ul ng-if="vm.isAuthenticated()" class="nav navbar-nav navbar-right">
+        <li ng-class="{active: vm.isActive('/all-books')}"><a ng-href="/all-books">All Books</a></li>
+        <li ng-class="{active: vm.isActive('/my-books')}"><a ng-href="/my-books">My Books</a></li>
+        <li ng-class="{active: vm.isActive('/profile')}"><a ng-href="/profile"><i class="fa fa-cog fa-lg"></i></a></li>
+        <li ng-class="{active: vm.isActive('/logout')}"><a ng-href="/logout"><i class="fa fa-sign-out fa-lg"></i></a></li>
       </ul>
     </div><!--/.navbar-collapse -->
   </div>
 </nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>Book Trading Club</h1>
-    <p>This is a place where every book lover can share and trade their own books with others.</p>
-    <p><i class="fa fa-book fa-4x"></i></p>
-  </div>
-</div>
+<div ng-view></div>
 
-<div class="container">
-<!-- Example row of columns -->
-<div class="row">
-  <div class="col-md-4">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-  </div>
-  <div class="col-md-4">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
- </div>
-  <div class="col-md-4">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-  </div>
-</div>
 
-<hr>
+<hr class="footer">
 
-<footer>
-  <p>&copy;<a href="http://www.tonyfreelance.com/">tonyfreelance</a> | <a href="">GitHub</a></p>
+<footer class=text-center>
+  <p><a href="http://www.tonyfreelance.com/">@tonyfreelance</a> | <a href="https://github.com/tonyfreelance/book-trading">GitHub</a></p>
   </footer>
 </div> <!-- /container -->

@@ -1,0 +1,19 @@
+<div class="container">
+    <!--Request/Approve books section-->
+    
+    
+    
+    <!--All Books section-->
+    <h1>All Books:</h1>
+    <hr>
+    <p>Click <strong>Request</strong> button to request a trade</p>
+    <div  class="cover" ng-repeat="book in vm.books">
+        <div>
+          <img ng-src="{{book.cover}}" src="{{book.cover}}" alt="{{book.name}}" />
+        </div>
+        <div class="imgButton" >
+          <button type="button" class="btn btn-success" ng-click="vm.requestBook(book)" ng-disabled="book.isDisabled" ng-show="!vm.isOwner(book)">Request</button>
+          <br ng-show="vm.isOwner(book)">
+        </div>
+    </div>
+</div>

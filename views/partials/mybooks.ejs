@@ -1,0 +1,71 @@
+<div class="container">
+    <!--Request/Approve books section-->
+    <div class="requestBtn">
+      <button class="btn btn-success" ng-click="vm.showMyRequests()">Your trade requests ({{vm.myRequestsNo}} outstanding)</button>
+      <button class="btn btn-primary" ng-click="vm.showOtherRequests()">Trade requests for you ({{vm.otherRequestsNo}} unapproved)</button>
+    </div>
+    <!--My Requests section-->
+    <div ng-show="vm.isShowMyRequests">
+        <div ng-show="vm.myRequests.waiting.length > 0">
+          <h1>Your outstanding requests:</h1>
+          <hr>
+        </div>
+        <div class="cover" ng-repeat="book in vm.myRequests.waiting track by $index">
+          <img ng-src="{{book.cover}}" src="{{book.cover}}"/>
+          <div class="imgButton">
+            <button type="button" class="btn btn-danger" ng-click="vm.deleteRequest('myRequestWaiting', $index)">Delete</button>
+          </div>
+        </div>
+        <div ng-show="vm.myRequests.approved.length > 0">
+          <h1>Your trade request was approved:</h1>
+          <hr>
+        </div>
+        <div class="cover" ng-repeat="book in vm.myRequests.approved track by $index">
+          <img ng-src="{{book.cover}}" src="{{book.cover}}"/>
+          <div class="imgButton">
+            <button type="button" class="btn btn-danger" ng-click="vm.deleteRequest('myRequestApproved', $index)">Delete</button>
+          </div>
+        </div>
+    </div>
+    <!--Other People's Requests section-->
+    <div ng-show="vm.isShowOtherRequests">
+        <div ng-show="vm.otherRequests.waiting.length > 0">
+          <h1>Requests need your approval:</h1>
+          <hr>
+        </div>
+        <div class="cover" ng-repeat="book in vm.otherRequests.waiting track by $index">
+          <img ng-src="{{book.cover}}" src="{{book.cover}}"/>
+          <div class="imgButton">
+            <button type="button" class="btn btn-danger" ng-click="vm.deleteRequest('otherRequestWaiting', $index)">Delete</button>
+            <button type="button" class="btn btn-success" ng-click="vm.approveRequest(book.userId, book.owner, $index)">Approve</button>
+          </div>
+        </div>
+        <div ng-show="vm.otherRequests.approved.length > 0">
+          <h1>Requests you've approved:</h1>
+          <hr>
+        </div>
+        <div class="cover" ng-repeat="book in vm.otherRequests.approved track by $index">
+          <img ng-src="{{book.cover}}" src="{{book.cover}}"/>
+          <div class="imgButton">
+            <button type="button" class="btn btn-danger" ng-click="vm.deleteRequest('otherRequestApproved', $index)">Delete</button>
+          </div>
+        </div>
+    </div>
+    <!--My Books section-->
+    <h1>My Books:</h1>
+    <hr>
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Add book" ng-model="vm.searchTerm">
+      </div>
+      <button type="submit" class="btn btn-primary" ng-click="vm.addBook()">Add</button>
+    </form>
+    <div class="cover" ng-repeat="book in vm.books">
+        <div>
+          <img ng-src="{{book.cover}}" src="{{book.cover}}" alt="{{book.name}}" />
+        </div>
+        <div class="imgButton">
+          <button type="button" class="btn btn-danger" ng-click="vm.deleteBook(book, $index)">Delete</button>
+        </div>
+    </div>
+</div>

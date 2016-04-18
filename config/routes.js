@@ -34,7 +34,89 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  
+  'GET /partials/:name': {
+    controller: 'UserController',
+    action: 'viewDisplay',
+    skipAssets: true
+  },
+  
+  'POST /auth/signup': {
+    controller: 'UserController',
+    action: 'signup'
+  },
+  
+  'POST /auth/login': {
+    controller: 'UserController',
+    action: 'login'
+  },
+  
+  'GET /addBook': {
+    controller: 'BookController',
+    action: 'addBook'
+  },
+  
+  'GET /getBooks': {
+    controller: 'UserController',
+    action: 'getBooks'
+  },
+  
+  'GET /deleteBook': {
+    controller: 'BookController',
+    action: 'deleteBook'
+  },
+  
+  'GET /deleteRequest': {
+    controller: 'UserController',
+    action: 'deleteRequest'
+  },
+  
+  'GET /getAllBooks': {
+    controller: 'BookController',
+    action: 'getAllBooks'
+  },
+  
+  'GET /requestBook': {
+    controller: 'UserController',
+    action: 'requestBook'
+  },
+  
+  'GET /myRequests': {
+    controller: 'UserController',
+    action: 'myRequests'
+  },
+  
+  'GET /otherRequests': {
+    controller: 'UserController',
+    action: 'otherRequests'
+  },
+  
+  'GET /approveRequest': {
+    controller: 'UserController',
+    action: 'approveRequest'
+  },
+  
+  'GET /getProfile': {
+    controller: 'UserController',
+    action: 'getProfile'
+  },
+  
+  'POST /updateProfile': {
+    controller: 'UserController',
+    action: 'updateProfile'
+  },
+  
+  'POST /updatePassword': {
+    controller: 'UserController',
+    action: 'updatePassword'
+  },
+  
+  '/*': {
+    controller: 'UserController',
+    action: 'redirectAll',
+    skipAssets: true
+  },
 
   /***************************************************************************
   *                                                                          *
