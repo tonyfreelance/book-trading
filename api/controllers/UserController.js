@@ -364,7 +364,7 @@ module.exports = {
 				}
 				res.send({
 					token: createJWT(result),
-					userId: user.id
+					userId: result.id
 				});
 			});
 		});
